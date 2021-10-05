@@ -8,7 +8,7 @@ function App(): JSX.Element {
 
   const handleSubmit = (e: FormElement) => {
     e.preventDefault();
-    console.log('submit')
+    console.log(newTask)
   }
 
   return (
