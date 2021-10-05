@@ -1,8 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
+
+type FormElement = React.FormEvent<HTMLFormElement>;
 
 function App(): JSX.Element {
+
+  const [newTask, setnewTask] = useState('')
+
+  const handleSubmit = (e: FormElement) => {
+    e.preventDefault();
+    console.log('submit')
+  }
+
   return (
-    <h1>HELLO TYPESCRIPT</h1>
+    <>
+      <form onSubmit={handleSubmit}>
+        <input type="text" onChange={e => setnewTask(e.target.value)} />
+        <button>Save</button>
+      </form>
+    </>
   );
 }
 
