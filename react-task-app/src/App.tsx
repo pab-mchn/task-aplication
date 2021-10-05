@@ -33,7 +33,7 @@ function App(): JSX.Element {
             <div className="card-body">
               <form onSubmit={handleSubmit}>
                 <input type="text" onChange={e => setnewTask(e.target.value)} value={newTask} className="form-control" />
-                <button className="btn btn-danger btn-block mt-2">Save</button>
+                <button className="btn btn-outline-danger mt-2">Save</button>
               </form>
             </div>
           </div>
