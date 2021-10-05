@@ -16,7 +16,7 @@ function App(): JSX.Element {
   const handleSubmit = (e: FormElement) => {
     e.preventDefault();
     addTask(newTask)
-    console.log(tasks);
+    setnewTask('');
   }
 
   //function for add a new task in the list
