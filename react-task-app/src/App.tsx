@@ -27,6 +27,12 @@ function App(): JSX.Element {
     setTasks(newTasks)
   }
 
+  const toggleDoneTask = (i: number) => {
+    const newTasks: ITask[] = [...tasks];
+    newTasks[i].done = !newTasks[i].done;
+    setTasks(newTasks);
+  }
+
 
   return (
     <div className="container p-4">
@@ -45,7 +51,7 @@ function App(): JSX.Element {
               <div className="card card-body mt-2" key={i}>
                 <h2 style={{textDecoration: t.done ? 'line-through' : ''}}>{t.name}</h2>
                 <div>
-                  <button className='btn btn-secondary'>
+                  <button className='btn btn-secondary' onClick={() => toggleDoneTask(i)}>
                     {t.done ? <FontAwesomeIcon icon={faBell} /> : <FontAwesomeIcon icon={faCoffee} />}
                   </button>
                 </div>
