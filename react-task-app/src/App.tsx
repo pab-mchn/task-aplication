@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faBell } from '@fortawesome/free-solid-svg-icons'
+import { faCut, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 interface ITask {
@@ -52,7 +52,7 @@ function App(): JSX.Element {
                 <h2 style={{textDecoration: t.done ? 'line-through' : ''}}>{t.name}</h2>
                 <div>
                   <button className='btn btn-secondary' onClick={() => toggleDoneTask(i)}>
-                    {t.done ? <FontAwesomeIcon icon={faBell} /> : <FontAwesomeIcon icon={faCoffee} />}
+                    {t.done ? <FontAwesomeIcon icon={faCut} /> : <FontAwesomeIcon icon={faCheck} />}
                   </button>
                 </div>
               </div>
