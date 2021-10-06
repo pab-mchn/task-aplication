@@ -25,6 +25,12 @@ function App(): JSX.Element {
     setTasks(newTasks)
   }
 
+  const toggleDoneTask = (i:number) => {
+    const newTasks: ITask[] = [...tasks];
+    newTask[i].done = !newTask[i].done;
+    setTasks(newTasks);
+  }
+
   return (
     <div className="container p-4">
       <div className="row">
@@ -32,19 +38,24 @@ function App(): JSX.Element {
           <div className="card">
             <div className="card-body">
               <form onSubmit={handleSubmit}>
-                <input type="text" onChange={e => setnewTask(e.target.value)} value={newTask} className="form-control" />
-                <button className="btn btn-outline-danger mt-2">Save</button>
+                <input type="text" onChange={e => setnewTask(e.target.value)} value={newTask} className="form-control" autoFocus />
+                <button className="btn btn-success btn-block mt-2">Save</button>
               </form>
             </div>
           </div>
           {
-            tasks.map((t: ITask, i: number) => {
-              return <h1 key={i}>{t.name}</h1>
-            })
-          }
+            tasks.map((t: ITask, i: number) => (
+              <div className="card card-body mt-2" key={i}>
+                <h2 style={{textDecoration: t.done ? 'line-through' : ''}}>{t.name}</h2>
+                <div>
+                  <button className='btn btn-secondary' onClick={() => toggleDoneTask(i)}>
+                    {t.done ? ':)' : 'x'}
+                  </button>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
-
     </div>
   );
 }
