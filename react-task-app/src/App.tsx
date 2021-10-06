@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faBell } from '@fortawesome/free-solid-svg-icons'
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 interface ITask {
@@ -25,11 +27,6 @@ function App(): JSX.Element {
     setTasks(newTasks)
   }
 
-  const toggleDoneTask = (i:number) => {
-    const newTasks: ITask[] = [...tasks];
-    newTask[i].done = !newTask[i].done;
-    setTasks(newTasks);
-  }
 
   return (
     <div className="container p-4">
@@ -48,8 +45,8 @@ function App(): JSX.Element {
               <div className="card card-body mt-2" key={i}>
                 <h2 style={{textDecoration: t.done ? 'line-through' : ''}}>{t.name}</h2>
                 <div>
-                  <button className='btn btn-secondary' onClick={() => toggleDoneTask(i)}>
-                    {t.done ? ':)' : 'x'}
+                  <button className='btn btn-secondary'>
+                    {t.done ? <FontAwesomeIcon icon={faBell} /> : <FontAwesomeIcon icon={faCoffee} />}
                   </button>
                 </div>
               </div>
