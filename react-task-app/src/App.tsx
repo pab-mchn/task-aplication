@@ -56,7 +56,9 @@ function App(): JSX.Element {
                   className="form-control"
                   ref={taskInput}
                   autoFocus />
-                <button className="btn btn-success btn-block mt-2">Save</button>
+                <div className="d-grid gap-2">
+                <button className="btn btn-success btn-block mt-2">Task</button>
+                </div>
               </form>
             </div>
           </div>
