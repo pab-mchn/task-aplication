@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCut, faCheck, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -13,12 +13,15 @@ function App(): JSX.Element {
   const [newTask, setnewTask] = useState<string>('')
   //add a new task in the list
   const [tasks, setTasks] = useState<ITask[]>([])
+  //reference in the input
+  const taskInput = useRef<HTMLInputElement>(null);
 
   //function for create new task
   const handleSubmit = (e: FormElement) => {
     e.preventDefault();
     addTask(newTask)
     setnewTask('');
+    taskInput.current?.focus();
   }
 
   //function for add a new task in the list
@@ -46,7 +49,13 @@ function App(): JSX.Element {
           <div className="card">
             <div className="card-body">
               <form onSubmit={handleSubmit}>
-                <input type="text" onChange={e => setnewTask(e.target.value)} value={newTask} className="form-control" autoFocus />
+                <input
+                  type="text"
+                  onChange={e => setnewTask(e.target.value)}
+                  value={newTask}
+                  className="form-control"
+                  ref={taskInput}
+                  autoFocus />
                 <button className="btn btn-success btn-block mt-2">Save</button>
               </form>
             </div>
