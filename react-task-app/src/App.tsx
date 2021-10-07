@@ -27,12 +27,17 @@ function App(): JSX.Element {
     setTasks(newTasks)
   }
 
-  const toggleDoneTask = (i: number) => {
+  const toggleDoneTask = (i: number): void => {
     const newTasks: ITask[] = [...tasks];
     newTasks[i].done = !newTasks[i].done;
     setTasks(newTasks);
   }
 
+  const removeTask = (i: number): void => {
+    const newTasks: ITask[] = [...tasks];
+    newTasks.splice(i,1);
+    setTasks(newTasks);
+  }
 
   return (
     <div className="container p-4">
@@ -54,7 +59,7 @@ function App(): JSX.Element {
                   <button className='btn btn-secondary' onClick={() => toggleDoneTask(i)}>
                     {t.done ? <FontAwesomeIcon icon={faCut} /> : <FontAwesomeIcon icon={faCheck} />}
                   </button>
-                  <button className='btn btn-secondary' onClick={() => toggleDoneTask(i)}>
+                  <button className='btn btn-danger' onClick={() => removeTask(i)}>
                     <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
                 </div>
