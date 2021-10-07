@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCut, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCut, faCheck, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 interface ITask {
@@ -53,6 +53,9 @@ function App(): JSX.Element {
                 <div>
                   <button className='btn btn-secondary' onClick={() => toggleDoneTask(i)}>
                     {t.done ? <FontAwesomeIcon icon={faCut} /> : <FontAwesomeIcon icon={faCheck} />}
+                  </button>
+                  <button className='btn btn-secondary' onClick={() => toggleDoneTask(i)}>
+                    <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
                 </div>
               </div>
